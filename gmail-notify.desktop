@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Gmail Notify
+Comment=Verificador de correos nuevos en segundo plano
+Path=/home/nicobaires/Proyectos/gmail-notify
+Exec=/home/nicobaires/.local/bin/uv --directory /home/nicobaires/Proyectos/gmail-notify run python gmail_notifier.py --monitor
+Icon=mail-unread
+Terminal=false
+Categories=Network;Email;
+StartupNotify=false

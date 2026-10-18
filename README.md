@@ -1,4 +1,4 @@
-# Mail Verification & Notifier
+# Gmail Notify
 
 Una herramienta CLI ligera y segura para gestionar correos de Gmail y recibir notificaciones de escritorio en Linux sin necesidad de mantener el navegador web abierto.
 
@@ -43,7 +43,7 @@ Clona el repositorio y entra al directorio:
 
 ```bash
 git clone <URL_DEL_REPOSITORIO>
-cd Mail_verification
+cd gmail-notify
 ```
 
 ### Opción 1: Usando `uv` (Recomendado)
@@ -70,7 +70,7 @@ pip install -e .
 Inicia la aplicación:
 
 ```bash
-uv run mail-verification
+uv run gmail-notify
 # o:
 python3 gmail_notifier.py
 ```
@@ -116,19 +116,19 @@ Puedes ejecutar el monitor directamente sin pasar por el menú interactivo:
 
 ```bash
 # Iniciar monitor con intervalo predeterminado (120 s)
-uv run mail-verification --monitor
+uv run gmail-notify --monitor
 
 # Iniciar comprobando cada 60 segundos
-uv run mail-verification --monitor --intervalo 60
+uv run gmail-notify --monitor --intervalo 60
 
 # Ajustar la cantidad de correos a mostrar en la vista previa
-uv run mail-verification --limite 15
+uv run gmail-notify --limite 15
 ```
 
 Para consultar todas las opciones disponibles:
 
 ```bash
-uv run mail-verification --help
+uv run gmail-notify --help
 ```
 
 ---
@@ -136,15 +136,16 @@ uv run mail-verification --help
 ## 📁 Estructura del Proyecto
 
 ```text
-Mail_verification/
+gmail-notify/
 ├── credentials.json       # Credenciales OAuth descargadas (ignorado en git)
 ├── token.json             # Token de sesión generado (ignorado en git)
+├── gmail-notify.desktop   # Lanzador para el menú de aplicaciones de Linux
 ├── gmail_notifier.py      # Punto de entrada directo
 ├── pyproject.toml         # Configuración y dependencias del proyecto
 ├── uv.lock                # Bloqueo determinista de dependencias
 ├── README.md              # Documentación
 └── src/
-    └── mail_verification/
+    └── gmail_notify/
         ├── __init__.py    # Exportación del paquete
         ├── auth.py        # Manejo de credenciales y renovación OAuth2
         ├── cli.py         # Interfaz de comandos y menú interactivo
@@ -158,38 +159,3 @@ Mail_verification/
 
 - Las credenciales nunca se transmiten a servidores externos; todo el tráfico se comunica directamente con las APIs oficiales de Google.
 - El archivo `.gitignore` incluye por defecto `credentials.json`, `token.json` y variables de entorno para prevenir fugas accidentales al control de versiones.
-
-Para consultar todas las opciones disponibles:
-
-```bash
-uv run mail-verification --help
-```
-
----
-
-## 📁 Estructura del Proyecto
-
-```text
-Mail_verification/
-├── credentials.json       # Credenciales OAuth descargadas (ignorado en git)
-├── token.json             # Token de sesión generado (ignorado en git)
-├── gmail_notifier.py      # Punto de entrada directo
-├── pyproject.toml         # Configuración y dependencias del proyecto
-├── uv.lock                # Bloqueo determinista de dependencias
-├── README.md              # Documentación
-└── src/
-    └── mail_verification/
-        ├── __init__.py    # Exportación del paquete
-        ├── auth.py        # Manejo de credenciales y renovación OAuth2
-        ├── cli.py         # Interfaz de comandos y menú interactivo
-        ├── notifier.py    # Envío seguro de notificaciones de escritorio
-        └── service.py     # Operaciones con la API de Gmail
-```
-
----
-
-## 🔒 Privacidad y Seguridad
-
-- Las credenciales nunca se transmiten a servidores externos; todo el tráfico se comunica directamente con las APIs oficiales de Google.
-- El archivo `.gitignore` incluye por defecto `credentials.json`, `token.json` y variables de entorno para prevenir fugas accidentales al control de versiones.
-
