@@ -42,8 +42,8 @@ Una herramienta CLI ligera y segura para gestionar correos de Gmail y recibir no
 Clona el repositorio y entra al directorio:
 
 ```bash
-git clone <URL_DEL_REPOSITORIO>
-cd gmail-notify
+git clone https://github.com/nicobaires/Gmail-Notify.git
+cd Gmail-Notify
 ```
 
 ### Opción 1: Usando `uv` (Recomendado)
