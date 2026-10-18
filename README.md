@@ -14,12 +14,16 @@ Una herramienta CLI ligera y segura para gestionar correos de Gmail y recibir no
   - **[N] Abrir en el navegador**: lanza el enlace directo al correo en tu navegador predeterminado.
 - **Modo Monitor en segundo plano**:
   - Consulta periódica automática (por defecto cada 120 segundos).
-  - Emite alertas visuales de escritorio con `notify-send`.
+  - Emite alertas visuales de escritorio nativas con `notify-send`.
+- **Integración con el sistema Linux**:
+  - Lanzador `.desktop` listo para integrarse al menú de aplicaciones y al inicio automático del sistema.
 - **Seguridad y robustez**:
   - Autenticación OAuth 2.0 oficial (`https://www.googleapis.com/auth/gmail.modify`).
   - Renovación automática y recuperación transparente si el token expira o es revocado.
   - Prevención de inyección de comandos shell al invocar notificaciones.
   - Archivos sensibles (`credentials.json`, `token.json`) protegidos en `.gitignore`.
+- **Suite de pruebas completa**:
+  - 31 pruebas unitarias automatizadas con `pytest` que garantizan la estabilidad del código.
 
 ---
 
@@ -133,6 +137,41 @@ uv run gmail-notify --help
 
 ---
 
+## 🖥️ Integración como App de Escritorio
+
+Para que la aplicación aparezca en tu menú de aplicaciones de Linux (GNOME, KDE, etc.) o se inicie automáticamente:
+
+### Agregar al Menú de Aplicaciones
+
+```bash
+mkdir -p ~/.local/share/applications
+cp gmail-notify.desktop ~/.local/share/applications/
+update-desktop-database ~/.local/share/applications/ 2>/dev/null || true
+```
+
+### Iniciar automáticamente al encender el equipo
+
+```bash
+mkdir -p ~/.config/autostart
+cp gmail-notify.desktop ~/.config/autostart/
+```
+
+---
+
+## 🧪 Pruebas Unitarias
+
+El proyecto cuenta con una batería de pruebas unitarias que cubren autenticación, interfaz CLI, servicio de API y notificaciones:
+
+```bash
+# Ejecutar todas las pruebas
+uv run pytest
+
+# Ejecutar con salida detallada
+uv run pytest -v
+```
+
+---
+
 ## 📁 Estructura del Proyecto
 
 ```text
@@ -140,17 +179,23 @@ gmail-notify/
 ├── credentials.json       # Credenciales OAuth descargadas (ignorado en git)
 ├── token.json             # Token de sesión generado (ignorado en git)
 ├── gmail-notify.desktop   # Lanzador para el menú de aplicaciones de Linux
-├── gmail_notifier.py      # Punto de entrada directo
+├── gmail_notifier.py      # Punto de entrada directo por compatibilidad
 ├── pyproject.toml         # Configuración y dependencias del proyecto
 ├── uv.lock                # Bloqueo determinista de dependencias
 ├── README.md              # Documentación
-└── src/
-    └── gmail_notify/
-        ├── __init__.py    # Exportación del paquete
-        ├── auth.py        # Manejo de credenciales y renovación OAuth2
-        ├── cli.py         # Interfaz de comandos y menú interactivo
-        ├── notifier.py    # Envío seguro de notificaciones de escritorio
-        └── service.py     # Operaciones con la API de Gmail
+├── src/
+│   └── gmail_notify/
+│       ├── __init__.py    # Exportación del paquete
+│       ├── auth.py        # Manejo de credenciales y renovación OAuth2
+│       ├── cli.py         # Interfaz de comandos y menú interactivo
+│       ├── notifier.py    # Envío seguro de notificaciones de escritorio
+│       └── service.py     # Operaciones con la API de Gmail
+└── tests/
+    ├── __init__.py
+    ├── test_auth.py       # Pruebas de autenticación y renovación de token
+    ├── test_cli.py        # Pruebas del menú y argumentos de línea de comandos
+    ├── test_notifier.py   # Pruebas de notificaciones nativas y snippets
+    └── test_service.py    # Pruebas de interacción con la API de Gmail
 ```
 
 ---

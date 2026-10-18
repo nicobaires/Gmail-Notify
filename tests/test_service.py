@@ -120,3 +120,4 @@ def test_archivar_correo_error():
     mock_service.users().messages().batchModify.side_effect = Exception("Archive error")
     exito = archivar_correo(mock_service, "msg_123")
     assert exito is False
+

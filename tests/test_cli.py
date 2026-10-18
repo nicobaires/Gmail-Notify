@@ -117,3 +117,4 @@ def test_main_modo_monitor():
          patch("gmail_notify.cli.iniciar_monitor") as mock_monitor:
         main()
         mock_monitor.assert_called_once()
+

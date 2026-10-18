@@ -51,3 +51,4 @@ def test_mostrar_notificacion_error_generico():
     with patch("subprocess.run", side_effect=Exception("Error desconocido")):
         resultado = mostrar_notificacion("Asunto", "remitente")
         assert resultado is False
+

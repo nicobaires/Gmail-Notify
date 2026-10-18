@@ -78,3 +78,4 @@ def test_autenticar_gmail_fallo_refresh_inicia_flujo(tmp_path):
             creds = autenticar_gmail(token_file=token_file, credentials_file=cred_file)
             assert creds == mock_new_creds
             assert token_file.read_text(encoding="utf-8") == '{"token": "recovered"}'
+
