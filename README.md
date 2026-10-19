@@ -23,7 +23,7 @@ Una herramienta CLI ligera y segura para gestionar correos de Gmail y recibir no
   - Prevención de inyección de comandos shell al invocar notificaciones.
   - Archivos sensibles (`credentials.json`, `token.json`) protegidos en `.gitignore`.
 - **Suite de pruebas completa**:
-  - 31 pruebas unitarias automatizadas con `pytest` que garantizan la estabilidad del código.
+  - 35 pruebas unitarias automatizadas con `pytest` que garantizan la estabilidad del código.
 
 ---
 
@@ -37,7 +37,7 @@ Una herramienta CLI ligera y segura para gestionar correos de Gmail y recibir no
    - Habilita la **Gmail API** en la sección *APIs y servicios > Biblioteca*.
    - Configura la pantalla de consentimiento de OAuth (*OAuth consent screen*) como usuario de prueba.
    - En *Credenciales*, crea un **ID de cliente de OAuth 2.0** con tipo de aplicación: **App de escritorio** (*Desktop App*).
-   - Descarga el archivo JSON y renómbralo a `credentials.json` en la raíz de este proyecto.
+   - Descarga el archivo JSON y colócalo en `~/.config/gmail-notify/credentials.json` (estándar XDG) o en la raíz del proyecto como `credentials.json`.
 
 ---
 

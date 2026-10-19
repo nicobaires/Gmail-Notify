@@ -15,3 +15,7 @@ credentials.json
 token.json
 *.token
 .env
+
+# Ideas y pasos a seguir
+task.md
+plan_mejora_task.md

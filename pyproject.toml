@@ -6,7 +6,7 @@ readme = "README.md"
 authors = [
     { name = "NicoBaires", email = "nicolamattina80@gmail.com" }
 ]
-requires-python = ">=3.15"
+requires-python = ">=3.10"
 dependencies = [
     "google-api-python-client>=2.201.0",
     "google-auth-httplib2>=0.4.4",
@@ -14,7 +14,7 @@ dependencies = [
 ]
 
 [project.scripts]
-gmail-notify = "gmail_notify:main"
+gmail-notify = "gmail_notify.cli:main"
 
 [build-system]
 requires = ["uv_build>=0.13.1,<0.14.0"]
