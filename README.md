@@ -1,4 +1,4 @@
-# Gmail Notify
+# Gmail Notify ![Licencia MIT](https://img.shields.io/badge/license-MIT-green.svg)
 
 Una herramienta CLI ligera y segura para gestionar correos de Gmail y recibir notificaciones de escritorio en Linux sin necesidad de mantener el navegador web abierto.
 
